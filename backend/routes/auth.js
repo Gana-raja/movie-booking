@@ -31,7 +31,13 @@ router.post('/login', async (req, res) => {
             username:user.username,
             role:user.role||'user'//fallback to user if role missing
         };
-        res.redirect('/movie_booking.html');
+        req.session.save(err=>{
+            if(err){
+                console.error('session save error',err);
+                return res.status(500).json({error:'Server error'});
+            }
+        })
+        res.json({success:true, redirectUrl:'/movie_booking.html'});
     } catch (err) {
         console.error('Login error',err);
         res.status(500).send('Server error');
@@ -51,10 +57,18 @@ router.get('/check-login', (req, res) => {
 
 // Logout route
 router.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/login.html');
+    req.session.destroy(err => {
+        if (err) {
+            console.error('Session destruction error:', err);
+            return res.status(500).send('Server error');
+        }
+        res.clearCookie('connect.sid', {
+            path: '/',
+            domain: process.env.NODE_ENV === 'production' ? '.cinetix-gamma.vercel.app' : undefined
+        });
+        res.redirect('/login.html');
+    });
 });
-
 //get session username
 router.get('/get-username',(req,res)=>{
     if(req.session.user){
