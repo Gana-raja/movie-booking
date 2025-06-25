@@ -25,7 +25,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: [
-    "https://your-vercel-app.vercel.app",
+    "https://cinetix-gamma.vercel.app/",
     "http://localhost:3000" // For local testing
   ],
   credentials: true
