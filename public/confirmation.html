@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CineTix - Confirmation</title>
+    <link rel="stylesheet" href="confirmation.css">
+</head>
+<body>
+    <div class="confirmation-container">
+        <div class="ticket">
+            <div class="ticket-header">
+                <h1>Movie Ticket</h1>
+                <div class="qr-code-container">
+                    <div class="qr-code" id="qr-code">
+                        <!-- QR code will be generated via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            <div class="ticket-body">
+                <div class="movie-info">
+                    <h2 id="movie-name"></h2>
+                    <p>Date: <span id="movie-date"></span></p>
+                    <p>Time: <span id="movie-time"></span></p>
+                </div>
+                <div class="seat-info">
+                    <p>Seats: <span id="seat-numbers"></span></p>
+                </div>
+                <div class="theater-info">
+                    <p>Theater: Screen 1</p>
+                    <p>Address: 123 Cinema Street, Movie City</p>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <p>Booking ID: <span id="booking-id"></span></p>
+                <p>Thank you for your purchase!</p>
+            </div>
+        </div>
+        <div class="actions">
+            <button id="print-ticket">Print Ticket</button>
+            <button id="download-ticket">Download Ticket</button>
+            <button id="return-home">Return to Home</button>
+        </div>
+    </div>
+
+    
+
+    <!-- Global Loader -->
+    <div id="global-loader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div class="spinner" style="width: 50px; height: 50px; border: 4px solid #f50629; border-radius: 50%; border-top-color: transparent;"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="confirmation.js"></script>
+</body>
+</html>

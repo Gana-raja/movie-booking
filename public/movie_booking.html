@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>CineTix - Movie Tickets</title>
+    <link rel="stylesheet" href="movie_booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">CineTix</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="movie_booking.html" class="active">Movies</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="my-bookings.html" class="my-bookings-link" style="display: none;">My Bookings</a>
+            <span id="usernameDisplay"><a href="login.html">Login / Register</a></span>
+        </div>
+        <div id="menu-icon"><i class="fas fa-bars"></i></div>
+    </div>
+
+    <div class="booking-container fade-in">
+        <div class="movie-selection">
+            <h3>Select a Movie:</h3>
+            <div class="movie-cards" id="movie-cards-container">
+                <!-- Movies will be loaded from database -->
+            </div>
+        </div>
+
+        <div class="movie-details" id="movie-details-container">
+            <div class="movie-poster">
+                <img id="movie-poster-img" src="" alt="Movie Poster" loading="lazy">
+            </div>
+            <div class="movie-info">
+                <div class="movie-info-content">
+                    <h1 id="movie-title">Please select a movie to see details</h1>
+                    <div class="movie-meta">
+                        <span id="movie-duration"></span> | 
+                        <span id="movie-genre"></span> | 
+                        <span id="movie-rating"></span>
+                    </div>
+                    <p id="movie-description"></p>
+                </div>
+                
+                <div class="date-container">
+                    <h3>Select Date:</h3>
+                    <div class="date-options" id="date-options">
+                        <!-- Dates will be loaded dynamically -->
+                    </div>
+                    <input type="hidden" id="selectedDate" name="bookingDate" required>
+                </div>
+
+                <div class="showtime-container">
+                    <h3>Select Showtime:</h3>
+                    <div class="showtimes" id="showtime-options">
+                        <!-- Showtimes will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seat-selection-section">
+            <ul class="showcase">
+                <li>
+                    <div class="seat"></div>
+                    <small>Available</small>
+                </li>
+                <li>
+                    <div class="seat selected" style="background-color: #6feaf6;"></div>
+                    <small>Selected</small>
+                </li>
+                <li>
+                    <div class="seat occupied" style="background-color: #fff;"></div>
+                    <small>Occupied</small>
+                </li>
+            </ul>
+
+            <div class="container">
+                <div class="screen"></div>
+                <div class="row">
+                    <div class="seat">A1</div>
+                    <div class="seat">A2</div>
+                    <div class="seat">A3</div>
+                    <div class="seat">A4</div>
+                    <div class="seat">A5</div>
+                    <div class="seat">A6</div>
+                    <div class="seat">A7</div>
+                    <div class="seat">A8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">B1</div>
+                    <div class="seat">B2</div>
+                    <div class="seat">B3</div>
+                    <div class="seat">B4</div>
+                    <div class="seat">B5</div>
+                    <div class="seat">B6</div>
+                    <div class="seat">B7</div>
+                    <div class="seat">B8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">C1</div>
+                    <div class="seat">C2</div>
+                    <div class="seat">C3</div>
+                    <div class="seat">C4</div>
+                    <div class="seat">C5</div>
+                    <div class="seat">C6</div>
+                    <div class="seat">C7</div>
+                    <div class="seat">C8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">D1</div>
+                    <div class="seat">D2</div>
+                    <div class="seat">D3</div>
+                    <div class="seat">D4</div>
+                    <div class="seat">D5</div>
+                    <div class="seat">D6</div>
+                    <div class="seat">D7</div>
+                    <div class="seat">D8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">E1</div>
+                    <div class="seat">E2</div>
+                    <div class="seat">E3</div>
+                    <div class="seat">E4</div>
+                    <div class="seat">E5</div>
+                    <div class="seat">E6</div>
+                    <div class="seat">E7</div>
+                    <div class="seat">E8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">F1</div>
+                    <div class="seat">F2</div>
+                    <div class="seat">F3</div>
+                    <div class="seat">F4</div>
+                    <div class="seat">F5</div>
+                    <div class="seat">F6</div>
+                    <div class="seat">F7</div>
+                    <div class="seat">F8</div>
+                </div>
+            </div>
+
+            <p class="text">
+                You have selected <span id="count">0</span> seats for a price of Rs.<span id="total">0</span>
+            </p>
+
+            <button class="proceed-btn" id="proceed-to-payment" disabled>
+                Proceed to Payment
+            </button>
+        </div>
+    </div>
+
+    <!-- Global Loader -->
+    <div id="global-loader">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="movie_booking.js"></script>
+</body>
+</html>

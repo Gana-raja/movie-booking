@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* ===== GLOBAL ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Reusable Classes */
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.spinner { animation: spin 1s linear infinite; }
+.pulse-once { animation: gentlePulse 0.3s ease; }
+
+body {
+    background-color: #242333;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.confirmation-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+}
+
+.ticket {
+    background-color: #333545;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.ticket-header {
+    background: linear-gradient(to right, #f50629 0%, #fd9d08 100%);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-header h1 {
+    margin: 0;
+    color: white;
+    font-size: 24px;
+}
+
+.qr-code-container{
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code {
+    display: block;
+    padding: 0;
+    background: white;
+}
+
+.qr-code canvas{
+    display: block;
+    margin: 0 auto;
+}
+
+.ticket-body {
+    padding: 20px;
+}
+
+.movie-info {
+    margin-bottom: 20px;
+}
+
+.movie-info h2 {
+    margin-top: 0;
+    color: #6feaf6;
+}
+
+.movie-info p, .seat-info p, .theater-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #ddd;
+}
+
+.seat-info {
+    margin-bottom: 20px;
+}
+
+.theater-info {
+    padding-top: 15px;
+    border-top: 1px dashed #555;
+}
+
+.ticket-footer {
+    background-color: #2a2a37;
+    padding: 15px 20px;
+    font-size: 14px;
+}
+
+.ticket-footer p {
+    margin: 5px 0;
+    color: #aaa;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+#print-ticket {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#download-ticket {
+    background-color: #2196F3;
+    color: white;
+}
+
+#return-home {
+    background-color: #555;
+    color: white;
+}
+
+.actions button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #242333 !important;
+    color: white !important;
+  }
+
+  .ticket {
+    box-shadow: none !important;
+  }
+
+  .actions {
+    display: none !important; /* hide buttons when printing */
+  }
+
+  .qr-code {
+    background-color: white !important;
+  }
+
+  /* Ensure backgrounds and gradients print */
+  .ticket-header {
+    background: linear-gradient(to right, #f50629 0%, #fd9d08 100%) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Optional: page break behavior */
+  .ticket {
+    page-break-inside: avoid;
+  }
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .confirmation-container {
+    padding: 0;
+  }
+
+  .ticket-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .qr-code-container {
+    margin-top: 10px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ticket-header h1 {
+    font-size: 1.3em;
+  }
+
+  .qr-code {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .movie-info h2 {
+    font-size: 1.1em;
+  }
+
+  .movie-info p, 
+  .seat-info p, 
+  .theater-info p {
+    font-size: 14px;
+  }
+
+  .ticket-body {
+    padding: 15px;
+  }
+
+  .ticket-footer {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+}

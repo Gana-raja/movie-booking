@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+/* ===== GLOBAL ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Reusable Classes */
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.spinner { animation: spin 1s linear infinite; }
+.pulse-once { animation: gentlePulse 0.3s ease; }
+
+
+body {
+    background-color: #242333;
+    color: #fff;
+    font-family: 'Lato',sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form a {
+    text-decoration: none !important;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-section {
+    background-color: rgba(0,0,0,0.2);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(245,6,41,0.2);
+    width: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: left-section;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 1s;
+}
+
+.right-section {
+    flex: 1;
+    transition: 1s;
+    background-image: url(32332483.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+}
+
+.header>h1 {
+    margin: 0;
+    color: red;
+}
+
+.header>h4 {
+    margin-top: 10px;
+    color: rgba(0, 0, 0, 4);
+    font-size: 15px;
+    font-weight: normal;
+    color: #6feaf6;
+}
+
+.form {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease-out;
+    opacity: 1;
+}
+
+.form>p {
+    text-align: right;
+}
+
+.form>p>a {
+    color: #000;
+    font-size: 14px;
+}
+
+.form-field {
+    background: #444451;
+    color: #fff;
+    border: none;
+    height: 46px;
+    padding: 0px 16px;
+    /*border: 2px solid #ddd;*/
+    border-radius: 5px;
+    outline: none;
+    transition: 0.2s;
+    margin-top: 20px;
+}
+
+.form-field::placeholder{
+    color: #fff;
+}
+
+.form-field:focus {
+    border-color: #0f7ef1;
+    box-shadow: 0 0 0 3px rgba(111,234,246,0.5);
+}
+
+.form>button {
+    padding: 12px 10px;
+    border: 0;
+    background: linear-gradient(to right, #f50629 0%, #fd9d08 100%);
+    border-radius: 3px;
+    margin-top: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form>button:hover,
+.check-email-btn:hover,
+.update-password-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(245,6,41,0.3);
+    transition: all 0.2s ease;
+}
+
+.form-tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+    border-bottom: 2px solid #f50629;
+    font-weight: bold;
+}
+
+.animation {
+    animation-name: move;
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-delay: 1s;
+}
+
+.a1 {
+    animation-delay: 0.5s;
+}
+
+.a2 {
+    animation-delay: 0.6s;
+}
+
+.a3 {
+    animation-delay: 0.7s;
+}
+
+.a4 {
+    animation-delay: 0.8s;
+}
+
+.a5 {
+    animation-delay: 0.9s;
+}
+
+.a6 {
+    animation-delay: 1s;
+}
+
+@keyframes move {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+@keyframes left-section {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+    100% {
+        opacity: 1;
+        padding: 20px 40px;
+        width: 440px;
+    }
+}
+
+/* Reset Form Styling */
+
+.form-title {
+    color: #f50629;
+    margin: 0 0 25px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Email Check Container */
+.email-check-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.email-check-container .form-field {
+    flex: 1;
+    margin-top: 0;
+}
+
+/* Check Email Button */
+.check-email-btn {
+    padding: 0 20px;
+    background: linear-gradient(to right, #f50629 0%, #fd9d08 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    height: 46px;
+    transition: all 0.3s ease;
+}
+
+/* Password Fields */
+.password-fields {
+    display: none;
+    margin-top: 15px;
+    flex-direction: column;
+}
+
+/* Update Password Button */
+.update-password-btn {
+    background: linear-gradient(to right, #f50629 0%, #fd9d08 100%);
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Success Message */
+.reset-success {
+    color: #4CAF50;
+    display: none;
+    text-align: center;
+    margin: 15px 0;
+    font-weight: 500;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Back to Login Link */
+.back-to-login {
+    color: #f50629;
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+/* Add these media queries at the bottom of your login.css file */
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .left-section {
+        width: 100%;
+        padding: 40px 20px !important;
+        order: 2; /* Moves below right section */
+        animation: none; /* Disable desktop animation */
+    }
+
+    .right-section {
+        min-height: 200px; /* Fixed height for mobile */
+        order: -1; /* Moves above left section */
+    }
+
+    .form {
+        max-width: 100%;
+    }
+
+    /* Adjust animations for mobile */
+    .animation {
+        animation-delay: 0.1s !important;
+    }
+
+    .a1 { animation-delay: 0.1s; }
+    .a2 { animation-delay: 0.2s; }
+    .a3 { animation-delay: 0.3s; }
+    .a4 { animation-delay: 0.4s; }
+    .a5 { animation-delay: 0.5s; }
+    .a6 { animation-delay: 0.6s; }
+}
+
+@media (max-width: 480px) {
+    .left-section {
+        padding: 20px !important;
+    }
+
+    .right-section {
+        height: 150px;
+    }
+
+    .form-field {
+        margin-top: 15px;
+    }
+
+    .form-tabs {
+        margin-bottom: 15px;
+    }
+
+    .tab {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .form-field,button{
+        width: 100%;
+    }
+
+    .email-check-container{
+        flex-direction: column;
+    }
+
+    .check-email-btn{
+        width: 100%;
+        margin-top: 10px;
+    }
+}

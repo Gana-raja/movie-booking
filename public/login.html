@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CineTix - Your premier movie ticketing service</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="header">
+                <h1>CineTix</h1>
+                <h4>Your premier movie ticketing service</h4>
+            </div>
+            
+            <div class="form-tabs">
+                <div class="tab active" id="login-tab">Login</div>
+                <div class="tab" id="register-tab">Register</div>
+            </div>
+            
+            <!--login form-->
+            <form class="form" id="loginForm" action="/login" method="POST">
+                <input type="text" name="username" placeholder="Username" class="form-field animation a1" required>
+                <input type="password" name="password" placeholder="Password" class="form-field animation a2" required>
+                <p><a href="#" id="forgotPasswordLink" style="color: #f50629;">Forgot Password?</a></p>
+                <button type="submit" class="animation a3">LOGIN</button>
+            </form>
+            
+            <!--Registration form-->
+            <form class="form" id="registerForm" style="display:none;" action="/login" method="POST">
+                <input type="text" name="username" placeholder="Username" class="form-field animation a1" required>
+                <input type="email" name="email" placeholder="Email" class="form-field animation a2" required>
+                <input type="password" name="password" placeholder="Password" class="form-field animation a3" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-field animation a4" required>
+                <button type="submit" class="animation a5">REGISTER</button>
+            </form>
+
+            <!--New password reset form-->
+            <form class="form" id="resetForm" style="display: none;">
+                <h3 class="form-title">Reset Password</h3>
+                <input type="text" class="form-field animation a1" id="resetUsername" placeholder="Enter your username" required>
+                <div class="email-check-container animation a2">
+                    <input type="email" id="resetEmail" class="form-field" placeholder="Your registered email" required>
+                    <button type="button" id="checkEmailBtn" class="check-email-btn">Check</button>
+                </div>
+                <div class="password-fields" id="passwordFields">
+                    <input type="password" id="newPassword" class="form-field animation a3" placeholder="New password" required>
+                    <input type="password" id="confirmPassword" class="form-field animation a4" placeholder="Confirm new password" required>
+                    <button type="submit" class="animation a5 update-password-btn">
+                        Update Password
+                    </button>
+                </div>
+                <p class="reset-success" id="resetSuccess">Password updated successfully!</p>
+                <p><a href="#" id="backToLogin" class="back-to-login" style="color: #f50629;">Back to Login</a></p>
+            </form>
+        </div>
+        <div class="right-section"></div>
+    </div>
+    
+    <!-- Global Loader -->
+    <div id="global-loader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div class="spinner" style="width: 50px; height: 50px; border: 4px solid #f50629; border-radius: 50%; border-top-color: transparent;"></div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
