@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function checkLoginStatus() {
-  fetch('/check-login')
+  fetch('https://cinetix-backend.onrender.com/check-login',{
+    credentials: 'include'
+  })
     .then(response => response.json())
     .then(data => {
       if (data.loggedIn) {

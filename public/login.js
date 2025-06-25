@@ -117,33 +117,34 @@ resetForm.addEventListener('submit', async (e) => {
 });
 
 // Login Form Submission
-// loginForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     showLoader();
+ loginForm.addEventListener('submit', async (e) => {
+     e.preventDefault();
+     showLoader();
     
-//     const formData = new FormData(loginForm);
-//     const data = Object.fromEntries(formData);
+     const formData = new FormData(loginForm);
+     const data = Object.fromEntries(formData);
     
-//     try {
-//         const response = await fetch('/login', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(data)
-//         });
+     try {
+         const response = await fetch('https://cinetix-backend.onrender.com/login', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(data),
+             credentials:'include'
+         });
         
-//         const result = await response.json();
-//         if (result.success) {
-//             // Handle successful login (e.g., redirect or store token)
-//             window.location.href = 'movie_booking.html'; // Example redirect
-//         } else {
-//             alert(result.message || 'Login failed');
-//         }
-//     } catch (err) {
-//         alert('Error during login');
-//     } finally {
-//         hideLoader();
-//     }
-// });
+         const result = await response.json();
+         if (result.success) {
+             // Handle successful login (e.g., redirect or store token)
+             window.location.href = result.redirectUrl; // Example redirect
+         } else {
+             alert(result.message || 'Login failed');
+         }
+     } catch (err) {
+         alert('Error during login');
+     } finally {
+         hideLoader();
+     }
+ });
 
 // // Register Form Submission
 // registerForm.addEventListener('submit', async (e) => {
