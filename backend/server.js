@@ -46,7 +46,6 @@ app.use(session({
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         secure: process.env.NODE_ENV === 'production',
         maxAge: 1000 * 60 * 60 * 24 * 14, // 14 days
-        domain: process.env.NODE_ENV === 'production' ? '.cinetix-gamma.vercel.app' : undefined
     }
 }));
 
