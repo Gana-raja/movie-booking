@@ -36,7 +36,7 @@ app.use(cors({
 app.use(session({
     secret: process.env.SESSION_SECRET || 'secretkey',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/cinetix',
         ttl: 14 * 24 * 60 * 60 // = 14 days
