@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
                 console.error('session save error',err);
                 return res.status(500).json({error:'Server error'});
             }
-            res.json({success:true, redirectUrl:'/movie_booking.html'});
+            res.json({success:true, redirectUrl:'index.html'});
         });
     } catch (err) {
         console.error('Login error',err);
