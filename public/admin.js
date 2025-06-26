@@ -10,7 +10,7 @@ function hideLoader() {
 // Tab Switching
 document.addEventListener('DOMContentLoaded', () => {
   // Check admin status
-  fetch('https://cinetix-backend.onrender.com/check-login',{credentials:'include'})
+  fetch('https://cinetix-backend.onrender.com/check-login',{method: 'GET',credentials:'include'})
     .then(res => res.json())
     .then(data => {
       if (!data.loggedIn || data.role !== 'admin') {
@@ -60,7 +60,7 @@ function setupTabSwitching() {
 // ===== BOOKING MANAGEMENT =====
 function loadBookings() {
   showLoader();
-  fetch('https://cinetix-backend.onrender.com/admin/bookings',{credentials:'include'})
+  fetch('https://cinetix-backend.onrender.com/admin/bookings',{method:'GET',credentials:'include'})
     .then(res => res.json())
     .then(data => {
       const movieSet = new Set();
@@ -158,7 +158,7 @@ function setupMovieManagement() {
 
 function loadMovies() {
   showLoader();
-  fetch('https://cinetix-backend.onrender.com/admin/movies',{credentials:'include'})
+  fetch('https://cinetix-backend.onrender.com/admin/movies',{method:'GET',credentials:'include'})
     .then(res => res.json())
     .then(movies => {
       const moviesList = document.getElementById('movies-list');
@@ -183,7 +183,7 @@ function showMovieForm(movieId = null) {
   
   if (movieId) {
     // Editing existing movie
-    fetch(`https://cinetix-backend.onrender.com/admin/movies/${movieId}`,{credentials:'include'})
+    fetch(`https://cinetix-backend.onrender.com/admin/movies/${movieId}`,{method:'GET',credentials:'include'})
       .then(res => res.json())
       .then(movie => {
         document.getElementById('movie-id').value = movie._id;
