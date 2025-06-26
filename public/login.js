@@ -69,7 +69,8 @@ checkEmailBtn.addEventListener('click', async () => {
         const response = await fetch('https://cinetix-backend.onrender.com/verify-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email })
+            body: JSON.stringify({ username, email }),
+            credentials: 'include'
         });
         
         const data = await response.json();
@@ -102,7 +103,8 @@ resetForm.addEventListener('submit', async (e) => {
         const response = await fetch('https://cinetix-backend.onrender.com/reset-password', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, newPassword })
+            body: JSON.stringify({ username, newPassword }),
+            credentials: 'include'
         });
         
         const data = await response.json();
@@ -161,14 +163,15 @@ resetForm.addEventListener('submit', async (e) => {
 //     }
     
 //     try {
-//         const response = await fetch('/register', {
+//         const response = await fetch('https://cinetix-backend.onrender.com/register', {
 //             method: 'POST',
 //             headers: { 'Content-Type': 'application/json' },
 //             body: JSON.stringify({
 //                 username: data.username,
 //                 email: data.email,
 //                 password: data.password
-//             })
+//             }),
+              credentials: 'include'
 //         });
         
 //         const result = await response.json();
