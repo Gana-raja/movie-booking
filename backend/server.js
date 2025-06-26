@@ -45,8 +45,7 @@ app.use(session({
         httpOnly: true,
         sameSite: 'none',
         secure: true,
-        domain: '.cinetix-gamma.vercel.app',
-        maxAge: 1000 * 60 * 60 * 24 * 14, // 14 days
+        maxAge: 1000 * 60 * 60 * 24 * 14 // 14 days
     }
 }));
 
