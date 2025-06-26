@@ -138,7 +138,7 @@ resetForm.addEventListener('submit', async (e) => {
          console.log(result);
          if (result.success) {
              // Handle successful login (e.g., redirect or store token)
-            // window.location.href = result.redirectUrl; // Example redirect
+             window.location.href = result.redirectUrl; // Example redirect
          } else {
              alert(result.message || 'Login failed');
          }
