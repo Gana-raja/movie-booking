@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function checkLoginStatus() {
   fetch('https://cinetix-backend.onrender.com/check-login',{
+    method: 'GET',
     credentials: 'include'
   })
     .then(response => response.json())
@@ -77,7 +78,7 @@ function loadMovies() {
   container.innerHTML=Array(6).fill().map(()=>
   `<div class="movie-card skeleton"></div>`
   ).join('');
-  fetch('https://cinetix-backend.onrender.com/api/movies',{credentials:'include'})
+  fetch('https://cinetix-backend.onrender.com/api/movies',{method:'GET',credentials:'include'})
     .then(response => response.json())
     .then(movies => {
       container.innerHTML = movies.map(movie => `
@@ -101,7 +102,7 @@ function selectMovie(movieId, isInitialLoad = false) {
   showLoader();
   selectedShowtime=null;
   document.querySelector('.seat-selection-section').style.display='none';
-  fetch(`https://cinetix-backend.onrender.com/api/movies/${movieId}`,{credentials:'include'})
+  fetch(`https://cinetix-backend.onrender.com/api/movies/${movieId}`,{method:'PUT',credentials:'include'})
     .then(response => response.json())
     .then(movie => {
       selectedMovie = movie;
@@ -298,7 +299,7 @@ function setupEventListeners() {
       localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
       
       const [loginData] = await Promise.all([
-        fetch('https://cinetix-backend.onrender.com/check-login',{credentials: 'include'}).then(res => res.json()),
+        fetch('https://cinetix-backend.onrender.com/check-login',{method:'GET',credentials: 'include'}).then(res => res.json()),
         new Promise(resolve => setTimeout(resolve, 1000)) // Minimum loader time
       ]);
       
