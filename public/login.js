@@ -148,46 +148,46 @@ resetForm.addEventListener('submit', async (e) => {
      }
  });
 
-// // Register Form Submission
-// registerForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     showLoader();
+ // Register Form Submission
+ registerForm.addEventListener('submit', async (e) => {
+     e.preventDefault();
+     showLoader();
     
-//     const formData = new FormData(registerForm);
-//     const data = Object.fromEntries(formData);
+     const formData = new FormData(registerForm);
+     const data = Object.fromEntries(formData);
     
-//     // Check if passwords match
-//     if (data.password !== data.confirm_password) {
-//         hideLoader();
-//         return alert('Passwords do not match!');
-//     }
+     // Check if passwords match
+     if (data.password !== data.confirm_password) {
+         hideLoader();
+         return alert('Passwords do not match!');
+     }
     
-//     try {
-//         const response = await fetch('https://cinetix-backend.onrender.com/register', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({
-//                 username: data.username,
-//                 email: data.email,
-//                 password: data.password
-//             }),
+     try {
+         const response = await fetch('https://cinetix-backend.onrender.com/register', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({
+                 username: data.username,
+                 email: data.email,
+                 password: data.password
+             }),
               credentials: 'include'
-//         });
+         });
         
-//         const result = await response.json();
-//         if (response.ok) {
-//             alert('Registration successful! Please login.');
-//             loginTab.click(); // Switch to login tab
-//             registerForm.reset();
-//         } else {
-//             alert(result.message || 'Registration failed');
-//         }
-//     } catch (err) {
-//         alert('Error during registration');
-//     } finally {
-//         hideLoader();
-//     }
-// });
+         const result = await response.json();
+         if (response.ok) {
+             alert('Registration successful! Please login.');
+             loginTab.click(); // Switch to login tab
+             registerForm.reset();
+         } else {
+             alert(result.message || 'Registration failed');
+         }
+     } catch (err) {
+         alert('Error during registration');
+     } finally {
+         hideLoader();
+     }
+ });
 
 // Back to Login
 backToLogin.addEventListener('click', (e) => {
