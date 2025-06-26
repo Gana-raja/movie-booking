@@ -24,14 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: [
-    "https://cinetix-gamma.vercel.app",
-    "http://localhost:3000" // For local testing
-  ],
-  credentials: true,
-  exposedHeaders:['set-cookie']
-}));
-
+   origin: [
+     "https://cinetix-gamma.vercel.app",
+     "http://localhost:3000"
+   ],
+   credentials: true,
+   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+   allowedHeaders: ["Content-Type", "Authorization"],
+ }));
 // Enhanced session configuration with MongoStore
 app.use(session({
     secret: process.env.SESSION_SECRET || 'secretkey',
@@ -43,8 +43,9 @@ app.use(session({
     }),
     cookie: {
         httpOnly: true,
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'none',
+        secure: true,
+        domain: '.cinetix-gamma.vercel.app',
         maxAge: 1000 * 60 * 60 * 24 * 14, // 14 days
     }
 }));
