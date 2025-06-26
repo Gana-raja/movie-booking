@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
   if (!bookingDetails) {
     alert('No booking details found. Please select a movie and seats first.');
-    window.location.href = 'movie_booking.html';
+    window.location.href = 'index.html';
     return;
   }
 
