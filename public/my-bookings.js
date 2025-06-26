@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchMyBookings() {
     showLoader();
-    fetch('https://cinetix-backend.onrender.com/my-bookings',{credentials:'include'})
+    fetch('https://cinetix-backend.onrender.com/my-bookings',{method:'GET',credentials:'include'})
         .then(response => {
             if (!response.ok) {
                 throw new Error('Not logged in or server error');
