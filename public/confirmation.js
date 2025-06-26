@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!confirmationDetails) {
         // Redirect back to booking page if no details found
         alert('No booking details found. Please complete the booking process first.');
-        window.location.href = 'movie_booking.html';
+        window.location.href = 'index.html';
         return;
     }
     
@@ -100,6 +100,6 @@ Thank you for your purchase!
     document.getElementById('return-home').addEventListener('click', function() {
         localStorage.removeItem('bookingDetails');
         localStorage.removeItem('confirmationDetails');
-        window.location.href = 'movie_booking.html';
+        window.location.href = 'index.html';
     });
 }
