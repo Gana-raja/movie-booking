@@ -77,7 +77,7 @@ function loadMovies() {
   container.innerHTML=Array(6).fill().map(()=>
   `<div class="movie-card skeleton"></div>`
   ).join('');
-  fetch('https://cinetix-backend.onrender.com/api/movies')
+  fetch('https://cinetix-backend.onrender.com/api/movies',{credentials:'include'})
     .then(response => response.json())
     .then(movies => {
       container.innerHTML = movies.map(movie => `
@@ -101,7 +101,7 @@ function selectMovie(movieId, isInitialLoad = false) {
   showLoader();
   selectedShowtime=null;
   document.querySelector('.seat-selection-section').style.display='none';
-  fetch(`https://cinetix-backend.onrender.com/api/movies/${movieId}`)
+  fetch(`https://cinetix-backend.onrender.com/api/movies/${movieId}`,{credentials:'include'})
     .then(response => response.json())
     .then(movie => {
       selectedMovie = movie;
@@ -219,7 +219,7 @@ function fetchBookedSeats() {
   });
   
   showLoader();
-  fetch(`https://cinetix-backend.onrender.com/booked-seats?movie=${encodeURIComponent(selectedMovie.title)}&showtime=${encodeURIComponent(selectedShowtime)}&bookingDate=${encodeURIComponent(selectedDate)}`)
+  fetch(`https://cinetix-backend.onrender.com/booked-seats?movie=${encodeURIComponent(selectedMovie.title)}&showtime=${encodeURIComponent(selectedShowtime)}&bookingDate=${encodeURIComponent(selectedDate)}`,{credentials:'include'})
     .then(res => res.json())
     .then(data => {
       document.querySelectorAll('.seat').forEach(seat => {
