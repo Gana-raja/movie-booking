@@ -298,7 +298,7 @@ function setupEventListeners() {
       localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
       
       const [loginData] = await Promise.all([
-        fetch('https://cinetix-backend.onrender.com/check-login').then(res => res.json()),
+        fetch('https://cinetix-backend.onrender.com/check-login',{credentials: 'include'}).then(res => res.json()),
         new Promise(resolve => setTimeout(resolve, 1000)) // Minimum loader time
       ]);
       
