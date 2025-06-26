@@ -10,7 +10,7 @@ function hideLoader() {
 // Tab Switching
 document.addEventListener('DOMContentLoaded', () => {
   // Check admin status
-  fetch('https://cinetix-backend.onrender.com/check-login')
+  fetch('https://cinetix-backend.onrender.com/check-login',{credentials:'include'})
     .then(res => res.json())
     .then(data => {
       if (!data.loggedIn || data.role !== 'admin') {
@@ -60,7 +60,7 @@ function setupTabSwitching() {
 // ===== BOOKING MANAGEMENT =====
 function loadBookings() {
   showLoader();
-  fetch('https://cinetix-backend.onrender.com/admin/bookings')
+  fetch('https://cinetix-backend.onrender.com/admin/bookings',{credentials:'include'})
     .then(res => res.json())
     .then(data => {
       const movieSet = new Set();
@@ -100,7 +100,8 @@ function clearAllBookings() {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
     .then(res => {
       if (!res.ok) {
@@ -157,7 +158,7 @@ function setupMovieManagement() {
 
 function loadMovies() {
   showLoader();
-  fetch('https://cinetix-backend.onrender.com/admin/movies')
+  fetch('https://cinetix-backend.onrender.com/admin/movies',{credentials:'include'})
     .then(res => res.json())
     .then(movies => {
       const moviesList = document.getElementById('movies-list');
@@ -182,7 +183,7 @@ function showMovieForm(movieId = null) {
   
   if (movieId) {
     // Editing existing movie
-    fetch(`https://cinetix-backend.onrender.com/admin/movies/${movieId}`)
+    fetch(`https://cinetix-backend.onrender.com/admin/movies/${movieId}`,{credentials:'include'})
       .then(res => res.json())
       .then(movie => {
         document.getElementById('movie-id').value = movie._id;
@@ -243,7 +244,8 @@ function saveMovie() {
   fetch(url, {
     method,
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(movieData)
+    body: JSON.stringify(movieData),
+    credentials:'include'
   })
     .then(res => res.json())
     .then(data => {
@@ -265,7 +267,7 @@ async function editMovie(movieId) {
   try {
     showLoader();
 
-    const response = await fetch(`/admin/movies/${movieId}`);
+    const response = await fetch(`/admin/movies/${movieId}`,{credentials:'include'});
     const movie = await response.json();
     
     if (response.ok) {
@@ -304,7 +306,7 @@ async function editMovie(movieId) {
 function deleteMovie(movieId) {
   if (confirm('Are you sure you want to delete this movie?')) {
     showLoader();
-    fetch(`/admin/movies/${movieId}`, { method: 'DELETE' })
+    fetch(`/admin/movies/${movieId}`, {credentials:'include', method: 'DELETE' })
       .then(res => res.json())
       .then(() => loadMovies())
       .catch(err => {
@@ -318,7 +320,7 @@ function deleteMovie(movieId) {
 function deleteBooking(bookingId) {
   if (confirm("Are you sure you want to delete this booking?")) {
     showLoader();
-    fetch(`/admin/bookings/${bookingId}`, { method: 'DELETE' })
+    fetch(`/admin/bookings/${bookingId}`, {credentials:'include', method: 'DELETE' })
       .then(res => res.json())
       .then(data => {
         alert(data.message);
