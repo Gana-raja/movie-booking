@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cinetix',
 const allowedOrigins= [
      "https://cinetix-gamma.vercel.app",
      "http://localhost:3000",
-     "https://cinetix-n42nqad6a-ganas-projects-8509debc.vercel.app"
+     "https://cinetix-ot1o2dxaa-ganas-projects-8509debc.vercel.app"
    ];
 
 // ✅ Middleware
