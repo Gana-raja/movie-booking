@@ -19,17 +19,24 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cinetix',
     console.error('❌ MongoDB connection failed:', err);
 });
 
-// ✅ Middleware
-app.use(cors({
-   origin: [
+const allowedOrigins= [
      "https://cinetix-gamma.vercel.app",
      "http://localhost:3000",
      "https://cinetix-n42nqad6a-ganas-projects-8509debc.vercel.app"
-   ],
+   ];
+
+// ✅ Middleware
+app.use(cors({
+   origin: allowedOrigins,
    credentials: true,
    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
    allowedHeaders: ["Content-Type", "Authorization"],
  }));
+
+app.options('*',cors({
+    origin: allowedOrigins,
+    credentials: true
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
