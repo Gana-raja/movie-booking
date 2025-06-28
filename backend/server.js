@@ -45,9 +45,12 @@ app.use(session({
         httpOnly: true,
         sameSite: 'none',
         secure: true,
+        domain: 'cinetix-gamma.verel.app',
         maxAge: 1000 * 60 * 60 * 24 * 14 // 14 days
     }
 }));
+
+app.set('trust proxy', 1); // Trust first proxy (Vercel & Render need this)
 
 // ✅ Route handling
 app.use('/', require('./routes/auth'));
