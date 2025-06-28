@@ -26,7 +26,8 @@ app.use(express.json());
 app.use(cors({
    origin: [
      "https://cinetix-gamma.vercel.app",
-     "http://localhost:3000"
+     "http://localhost:3000",
+     "https://cinetix-n42nqad6a-ganas-projects-8509debc.vercel.app"
    ],
    credentials: true,
    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
