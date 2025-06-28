@@ -28,8 +28,8 @@ const movieValidation = [
   check('title').notEmpty().withMessage('Title is required'),
   check('description').notEmpty().withMessage('Description is required'),
   check('price').isFloat({ gt: 0 }).withMessage('Price must be positive'),
-  check('showtimes').isArray({ min: 1 }).withMessage('At least one showtime required'),
-  check('dates').isArray({ min: 1 }).withMessage('At least one date required')
+  check('showtimes').custom(val=> Array.isArray(val)&& val.length>0).withMessage('At least one showtime required'),
+  check('dates').custom(val=> Array.isArray(val)&& val.length>0).withMessage('At least one date required')
 ];
 
 router.get('/movies', isAdmin, async (req, res) => {
