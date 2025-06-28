@@ -176,9 +176,9 @@ resetForm.addEventListener('submit', async (e) => {
          });
         
          const result = await response.json();
-         if (response.ok) {
+         if (response.ok && result.success) {
              alert('Registration successful! Please login.');
-             loginTab.click(); // Switch to login tab
+             window.location.href='login.html'; // Switch to login tab
              registerForm.reset();
          } else {
              alert(result.message || 'Registration failed');
