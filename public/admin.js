@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/';
       } else {
         document.getElementById('adminDisplay').innerHTML = 
-          `Welcome, ${data.username} | <a href="/logout" style="color:#f50629;">Logout</a>`;
+          `Welcome, ${data.username} | <a href="https://cinetix-backend.onrender.com/logout" style="color:#f50629;">Logout</a>`;
         setupTabSwitching();
         loadMovies();
       }
