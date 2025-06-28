@@ -20,9 +20,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cinetix',
 });
 
 // ✅ Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 app.use(cors({
    origin: [
      "https://cinetix-gamma.vercel.app",
@@ -33,6 +30,10 @@ app.use(cors({
    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
    allowedHeaders: ["Content-Type", "Authorization"],
  }));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Enhanced session configuration with MongoStore
 app.use(session({
     secret: process.env.SESSION_SECRET || 'secretkey',
@@ -46,7 +47,7 @@ app.use(session({
         httpOnly: true,
         sameSite: 'none',
         secure: true,
-        domain: '.vercel.app',
+        //domain: '.vercel.app',
         maxAge: 1000 * 60 * 60 * 24 * 14 // 14 days
     }
 }));
