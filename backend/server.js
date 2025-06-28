@@ -110,7 +110,7 @@ app.use(express.static(path.join(__dirname, '../public'))); // ▲ Fixed path
 
 // Redirect root path to movie booking page (updated path)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/movie_booking.html')); // ▲ Fixed path
+    res.sendFile(path.join(__dirname, '../public/index.html')); // ▲ Fixed path
 });
 
 // Error handling (optional but recommended)
