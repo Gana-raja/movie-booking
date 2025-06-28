@@ -102,7 +102,7 @@ function selectMovie(movieId, isInitialLoad = false) {
   showLoader();
   selectedShowtime=null;
   document.querySelector('.seat-selection-section').style.display='none';
-  fetch(`https://cinetix-backend.onrender.com/api/movies/${movieId}`,{method:'PUT',credentials:'include'})
+  fetch(`https://cinetix-backend.onrender.com/api/movies/${movieId}`,{method:'GET',credentials:'include'})
     .then(response => response.json())
     .then(movie => {
       selectedMovie = movie;
