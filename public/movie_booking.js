@@ -64,7 +64,7 @@ function checkLoginStatus() {
         document.getElementById('usernameDisplay').innerHTML = 
           `<div class="user-info">
               <span class="welcome-msg">Welcome, <strong>${data.username}</strong></span> 
-              <a href="/logout" class="logout-link" style="color:#f50629;">Logout</a>
+              <a href="https://cinetix-backend.onrender.com/logout" class="logout-link" style="color:#f50629;">Logout</a>
             </div>`;
         document.querySelector('.my-bookings-link').style.display = 'inline-block';
       }
