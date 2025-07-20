@@ -43,7 +43,7 @@ app.use(express.json());
 
 // Enhanced session configuration with MongoStore
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'secretkey',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
